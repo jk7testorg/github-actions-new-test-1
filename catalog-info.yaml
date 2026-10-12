@@ -1,0 +1,22 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: github-actions-new-test-1
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+    backstage.io/kubernetes-id: github-actions-new-test-1
+    sonarqube.org/project-key: github-actions-new-test-1
+    github.com/project-slug: jk7testorg/github-actions-new-test-1
+    argocd/app-name: github-actions-new-test-1-dev
+    prometheus.io/rule: "kube_pod_status_phase{pod=~'github-actions-new-test-1.*'}|phase,kube_pod_container_status_restarts_total{pod=~'github-actions-new-test-1.*'}|container"
+    prometheus.io/alert: "KubePodCrashLooping,KubeDeploymentReplicasMismatch,KubePodNotReady,KubeContainerWaiting,KubeContainerOOMKilled,KubeDeploymentRolloutStuck"
+    prometheus.io/labels: "namespace=dev"
+    grafana/overview-dashboard: 'http://34.29.242.32/grafana/d/ffuuiuytw0f0gb/backstage-view?var-pod_prefix=github-actions-new-test-1&var-namespace=dev&kiosk' 
+  tags:
+    - java-maven
+    - scaffolded
+spec:
+  type: service
+  lifecycle: Dev
+  owner: user:default/madryx
+  system: dssp-platform
